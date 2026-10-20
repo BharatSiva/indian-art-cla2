@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ajanta Storyboard – Mahajanaka Jataka</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  :root{
+    --ochre:#ecd9b0; --paper:#f6ead0; --red:#9c3b22; --green:#5f7a4a; --lapis:#2f4f7f;
+    --gold:#c9962e; --ink:#3a2416; --skin:#a8643c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#ddd;font-family:Inter,Arial,sans-serif;color:var(--ink)}
+  .page{width:297mm;height:210mm;background:var(--paper);padding:9mm 11mm 8mm;margin:0 auto 10px;
+        display:flex;flex-direction:column;page-break-after:always;overflow:hidden;
+        border:0}
+  @media print{body{background:none}.page{margin:0}}
+  header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--red);padding-bottom:3mm;margin-bottom:4mm}
+  h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:25pt;color:var(--red);line-height:1}
+  .sub{font-size:8.5pt;margin-top:1.5mm;color:#6b4a33}
+  .meta{font-size:8pt;text-align:right;line-height:1.5}
+  .meta b{color:var(--red)}
+  .grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:4mm}
+  .panel{background:#fffaf0;border:1.5px solid var(--ink);border-radius:2px;display:flex;flex-direction:column;overflow:hidden}
+  .panel svg{width:100%;display:block;border-bottom:1.5px solid var(--ink);aspect-ratio:300/150}
+  .cap{padding:2mm 3mm;font-size:7.6pt;line-height:1.38;flex:1}
+  .cap h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:12.5pt;color:var(--red);margin-bottom:.8mm;display:flex;gap:2mm;align-items:center}
+  .num{display:inline-flex;width:5.2mm;height:5.2mm;border-radius:50%;background:var(--red);color:#fff;font:600 7.5pt Inter,Arial;align-items:center;justify-content:center;flex:none}
+  .say{font-style:italic;color:var(--lapis);margin-top:1mm}
+  .about{background:var(--ochre)}
+  .about .cap{font-size:7.4pt}
+  .about ul{margin:1mm 0 0 4mm}
+  .moral{margin-top:1.5mm;padding:1.5mm 2mm;background:#fffaf0;border-left:3px solid var(--red);font-weight:600}
+  footer{font-size:7pt;color:#7a5a40;text-align:center;margin-top:2.5mm}
+</style>
+</head>
+<body>
+
+<section class="page">
+  <header>
+    <div>
+      <h1>The Story of Prince Mahajanaka</h1>
+      <div class="sub">A storyboard retelling of the <b>Mahajanaka Jataka</b>, painted in <b>Cave 1, Ajanta</b> (c. late 5th century CE, Vakataka period)</div>
+    </div>
+    <div class="meta"><b>21LEM301T – Indian Art Forms</b><br>CLA-II · Assignment 1 · Cave Paintings Storyboard (CO2)<br>Team: ______________________________</div>
+  </header>
+  <div class="grid" id="g1"></div>
+  <footer>Page 1 of 2 · Illustrations drawn in the earth-pigment palette of the Ajanta murals: red & yellow ochre, terre-verte green, lapis blue, lamp black</footer>
+</section>
+
+<section class="page">
+  <header>
+    <div>
+      <h1>The Story of Prince Mahajanaka <span style="font-size:15pt;color:#6b4a33">(continued)</span></h1>
+      <div class="sub">From shipwreck to kingship to renunciation: a Bodhisattva's lesson in effort and detachment</div>
+    </div>
+    <div class="meta"><b>21LEM301T – Indian Art Forms</b><br>CLA-II · Cave Paintings Storyboard</div>
+  </header>
+  <div class="grid" id="g2"></div>
+  <footer>Page 2 of 2</footer>
+</section>
+
+<script>
+const C={ochre:'#ecd9b0',red:'#9c3b22',green:'#5f7a4a',lgreen:'#8aa067',lapis:'#2f4f7f',sea:'#4f74a3',gold:'#c9962e',ink:'#3a2416',skin:'#a8643c',fair:'#c98a5a',white:'#f3ead6',saffron:'#d4802a',grey:'#8a8378',sky:'#e7d7b4'};
+const S='stroke="'+C.ink+'" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"';
+
+function person(x,y,h,o={}){
+  const r=h*0.1, hy=y-h+r*1.2, sy=hy+r*1.25, sw=h*0.15, bw=h*(o.female?0.24:0.19);
+  const skin=o.skin||C.skin, robe=o.robe||C.red;
+  let g='';
+  if(o.halo) g+=`<circle cx="${x}" cy="${hy}" r="${r*1.9}" fill="${C.gold}" opacity=".35" stroke="${C.gold}"/>`;
+  // arms (behind/over robe)
+  const A=o.arms||'down', ay=sy+2;
+  const arm=(x1,y1,x2,y2)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${C.ink}" stroke-width="${h*0.075+1.2}" stroke-linecap="round"/><path d="M${x1} ${y1} L${x2} ${y2}" stroke="${skin}" stroke-width="${h*0.075}" stroke-linecap="round"/>`;
+  let arms='';
+  if(A==='down') arms=arm(x-sw,ay,x-sw*1.35,sy+h*0.36)+arm(x+sw,ay,x+sw*1.35,sy+h*0.36);
+  if(A==='up') arms=arm(x-sw,ay,x-sw*1.9,sy-h*0.28)+arm(x+sw,ay,x+sw*1.9,sy-h*0.28);
+  if(A==='pray') arms=arm(x-sw,ay,x-1,sy+h*0.16)+arm(x+sw,ay,x+1,sy+h*0.16);
+  if(A==='point') arms=arm(x-sw,ay,x-sw*1.35,sy+h*0.36)+arm(x+sw,ay,x+sw*3,sy+h*0.02);
+  if(A==='pointL') arms=arm(x+sw,ay,x+sw*1.35,sy+h*0.36)+arm(x-sw,ay,x-sw*3,sy+h*0.02);
+  if(A==='sword') arms=arm(x-sw,ay,x-sw*1.35,sy+h*0.36)+arm(x+sw,ay,x+sw*2.2,sy-h*0.12)+`<path d="M${x+sw*2.2} ${sy-h*0.12} L${x+sw*4.2} ${sy-h*0.5}" stroke="#cfcfcf" stroke-width="2.2" ${''}/><path d="M${x+sw*2.2} ${sy-h*0.12} L${x+sw*4.2} ${sy-h*0.5}" stroke="${C.ink}" stroke-width=".6" fill="none"/>`;
+  if(A==='dance') arms=arm(x-sw,ay,x-sw*2.2,sy-h*0.18)+arm(x+sw,ay,x+sw*2.4,sy+h*0.12);
+  if(A==='hold') arms=arm(x-sw,ay,x-sw*0.2,sy+h*0.22)+arm(x+sw,ay,x+sw*0.4,sy+h*0.22);
+  if(o.armsBehind) g+=arms;
+  // robe
+  g+=`<path d="M${x-sw} ${sy} Q${x} ${sy-r*0.5} ${x+sw} ${sy} L${x+bw} ${y} L${x-bw} ${y} Z" fill="${robe}" ${S}/>`;
+  if(o.sash) g+=`<path d="M${x-sw} ${sy+2} L${x+bw*0.8} ${y-h*0.25}" stroke="${o.sash}" stroke-width="${h*0.06}"/>`;
+  if(o.necklace) g+=`<path d="M${x-sw*0.7} ${sy+1} Q${x} ${sy+h*0.12} ${x+sw*0.7} ${sy+1}" fill="none" stroke="${C.gold}" stroke-width="1.6"/>`;
+  if(!o.armsBehind) g+=arms;
+  // head
+  if(o.female) g+=`<circle cx="${x-r*0.95}" cy="${hy-r*0.15}" r="${r*0.62}" fill="${C.ink}"/>`;
+  if(o.jata) g+=`<ellipse cx="${x}" cy="${hy-r*1.15}" rx="${r*0.55}" ry="${r*0.7}" fill="#5a3a22" ${S}/>`;
+  g+=`<circle cx="${x}" cy="${hy}" r="${r}" fill="${skin}" ${S}/>`;
+  if(!o.bald) g+=`<path d="M${x-r} ${hy-r*0.1} A${r} ${r} 0 0 1 ${x+r} ${hy-r*0.1} Q${x} ${hy-r*0.55} ${x-r} ${hy-r*0.1}Z" fill="${o.jata?'#5a3a22':C.ink}"/>`;
+  if(o.crown) g+=`<path d="M${x-r*0.85} ${hy-r*0.55} L${x-r*0.7} ${hy-r*1.9} L${x-r*0.3} ${hy-r*1.35} L${x} ${hy-r*2.25} L${x+r*0.3} ${hy-r*1.35} L${x+r*0.7} ${hy-r*1.9} L${x+r*0.85} ${hy-r*0.55} Z" fill="${C.gold}" ${S}/>`;
+  const t=o.rot?` transform="rotate(${o.rot} ${o.rx??x} ${o.ry??y})"`:'';
+  return `<g${t}>${g}</g>`;
+}
+function tree(x,y,s,o={}){
+  let g=`<path d="M${x-s*0.07} ${y} L${x-s*0.04} ${y-s*0.55} L${x+s*0.04} ${y-s*0.55} L${x+s*0.07} ${y}Z" fill="#6b4226" ${S}/>`;
+  if(o.broken){
+    g+=`<path d="M${x} ${y-s*0.5} L${x-s*0.35} ${y-s*0.85} M${x} ${y-s*0.55} L${x+s*0.3} ${y-s*0.95} M${x+s*0.15} ${y-s*0.75} L${x+s*0.42} ${y-s*0.7}" stroke="#6b4226" stroke-width="${s*0.05}" fill="none" stroke-linecap="round"/>`;
+    g+=`<path d="M${x+s*0.3} ${y-s*0.95} L${x+s*0.36} ${y-s*0.82}" stroke="${C.ink}" stroke-width="1"/>`;
+    [[-0.33,-0.86],[0.28,-0.98],[0.42,-0.72]].forEach(([a,b])=>g+=`<ellipse cx="${x+s*a}" cy="${y+s*b}" rx="${s*0.08}" ry="${s*0.05}" fill="${C.lgreen}" ${S}/>`);
+    [[-0.5,0],[0.45,-0.01],[0.2,0.01],[-0.25,0.01]].forEach(([a,b])=>g+=`<ellipse cx="${x+s*a}" cy="${y+s*b-2}" rx="${s*0.06}" ry="${s*0.025}" fill="${C.lgreen}" ${S}/>`);
+    return g;
+  }
+  [[0,-0.85,0.32],[-0.27,-0.7,0.25],[0.27,-0.7,0.25],[-0.15,-1.05,0.22],[0.17,-1.03,0.22]].forEach(([a,b,r])=>g+=`<circle cx="${x+s*a}" cy="${y+s*b}" r="${s*r}" fill="${o.light?C.lgreen:C.green}" ${S}/>`);
+  for(let i=0;i<(o.fruit||0);i++){const a=Math.sin(i*2.3)*0.33,b=-0.65-((i*0.37)%0.45);g+=`<ellipse cx="${x+s*a}" cy="${y+s*b}" rx="${s*0.045}" ry="${s*0.06}" fill="#e3a72f" ${S}/>`;}
+  return g;
+}
+function palace(x,y,w,h){
+  let g=`<rect x="${x}" y="${y-h*0.65}" width="${w}" height="${h*0.65}" fill="#c87a4f" ${S}/>`;
+  const n=4; for(let i=0;i<n;i++){const px=x+w*(0.12+i*0.25);g+=`<rect x="${px}" y="${y-h*0.6}" width="${w*0.05}" height="${h*0.6}" fill="${C.white}" ${S}/>`;}
+  g+=`<path d="M${x-w*0.06} ${y-h*0.65} L${x+w*1.06} ${y-h*0.65} L${x+w*0.85} ${y-h*0.88} L${x+w*0.15} ${y-h*0.88}Z" fill="${C.red}" ${S}/>`;
+  g+=`<path d="M${x+w*0.22} ${y-h*0.88} Q${x+w*0.5} ${y-h*1.18} ${x+w*0.78} ${y-h*0.88}Z" fill="${C.gold}" ${S}/>`;
+  g+=`<circle cx="${x+w*0.5}" cy="${y-h*1.02}" r="${h*0.05}" fill="${C.ochre}" ${S}/>`;
+  return g;
+}
+function waves(y,col=C.sea,amp=5,ph=0){
+  let d=`M0 ${y}`; for(let i=0;i<=300;i+=20) d+=` Q${i+10} ${y-amp+(i/20%2?amp*0.4:0)} ${i+20} ${y}`;
+  d+=` L300 170 L0 170Z`;
+  let g=`<path d="${d}" fill="${col}" ${S}/>`;
+  for(let i=ph;i<300;i+=26) g+=`<path d="M${i} ${y+9} q5 -5 10 0" fill="none" stroke="#dfe7f0" stroke-width="1.2"/>`;
+  return g;
+}
+function ship(x,y,s,o={}){
+  let g=`<path d="M${x-s*0.6} ${y-s*0.15} L${x+s*0.6} ${y-s*0.15} L${x+s*0.42} ${y+s*0.08} L${x-s*0.45} ${y+s*0.08}Z" fill="#7a4a28" ${S}/>`;
+  g+=`<path d="M${x-s*0.6} ${y-s*0.15} q-8 -8 -4 -16 M${x+s*0.6} ${y-s*0.15} q8 -8 4 -16" fill="none" stroke="#7a4a28" stroke-width="3"/>`;
+  if(o.broken){g+=`<path d="M${x} ${y-s*0.15} L${x+s*0.05} ${y-s*0.55}" stroke="${C.ink}" stroke-width="2.4"/><path d="M${x+s*0.05} ${y-s*0.55} L${x+s*0.45} ${y-s*0.45} L${x+s*0.2} ${y-s*0.2}Z" fill="${C.white}" ${S} opacity=".9"/>`;}
+  else{g+=`<path d="M${x} ${y-s*0.15} L${x} ${y-s*0.95}" stroke="${C.ink}" stroke-width="2.4"/><path d="M${x+2} ${y-s*0.9} Q${x+s*0.45} ${y-s*0.6} ${x+2} ${y-s*0.3}Z" fill="${C.white}" ${S}/><path d="M${x} ${y-s*0.95} l10 3 l-10 3" fill="${C.red}" ${S}/>`;}
+  const t=o.rot?` transform="rotate(${o.rot} ${x} ${y})"`:'';
+  return `<g${t}>${g}</g>`;
+}
+function bull(x,y,s,f=1){
+  return `<g transform="translate(${x} ${y}) scale(${f} 1)">
+  <path d="M${-s*0.4} 0 L${-s*0.38} ${-s*0.3} M${-s*0.2} 0 L${-s*0.2} ${-s*0.3} M${s*0.2} 0 L${s*0.2} ${-s*0.3} M${s*0.36} 0 L${s*0.34} ${-s*0.3}" stroke="${C.ink}" stroke-width="${s*0.07}" stroke-linecap="round"/>
+  <ellipse cx="0" cy="${-s*0.42}" rx="${s*0.48}" ry="${s*0.2}" fill="${C.white}" ${S}/>
+  <path d="M${s*0.1} ${-s*0.6} q${s*0.06} -${s*0.14} ${s*0.16} -${s*0.06}" fill="${C.white}" ${S}/>
+  <ellipse cx="${s*0.56}" cy="${-s*0.5}" rx="${s*0.15}" ry="${s*0.11}" fill="${C.white}" ${S}/>
+  <path d="M${s*0.5} ${-s*0.6} q-${s*0.06} -${s*0.14} ${s*0.02} -${s*0.18} M${s*0.62} ${-s*0.6} q${s*0.06} -${s*0.14} -${s*0.02} -${s*0.18}" fill="none" stroke="${C.ink}" stroke-width="1.4"/>
+  <path d="M${-s*0.48} ${-s*0.42} q-${s*0.1} ${s*0.1} -${s*0.06} ${s*0.26}" fill="none" stroke="${C.ink}" stroke-width="1.1"/></g>`;
+}
+function horse(x,y,s,f=1,col='#efe4cc'){
+  return `<g transform="translate(${x} ${y}) scale(${f} 1)">
+  <path d="M${-s*0.36} 0 L${-s*0.32} ${-s*0.32} M${-s*0.16} 0 L${-s*0.18} ${-s*0.32} M${s*0.2} 0 L${s*0.17} ${-s*0.32} M${s*0.38} 0 L${s*0.32} ${-s*0.32}" stroke="${C.ink}" stroke-width="${s*0.06}" stroke-linecap="round"/>
+  <ellipse cx="0" cy="${-s*0.44}" rx="${s*0.44}" ry="${s*0.17}" fill="${col}" ${S}/>
+  <path d="M${s*0.28} ${-s*0.52} L${s*0.48} ${-s*0.86} L${s*0.68} ${-s*0.78} L${s*0.62} ${-s*0.7} L${s*0.48} ${-s*0.68} L${s*0.42} ${-s*0.44}Z" fill="${col}" ${S}/>
+  <path d="M${s*0.3} ${-s*0.55} L${s*0.47} ${-s*0.86}" stroke="${C.red}" stroke-width="2.4"/>
+  <path d="M${-s*0.44} ${-s*0.48} q-${s*0.18} ${s*0.05} -${s*0.16} ${s*0.32}" fill="none" stroke="${C.ink}" stroke-width="2"/></g>`;
+}
+function elephant(x,y,s,f=1){
+  return `<g transform="translate(${x} ${y}) scale(${f} 1)">
+  <rect x="${-s*0.42}" y="${-s*0.42}" width="${s*0.17}" height="${s*0.42}" fill="${C.grey}" ${S}/><rect x="${-s*0.17}" y="${-s*0.42}" width="${s*0.17}" height="${s*0.42}" fill="${C.grey}" ${S}/>
+  <rect x="${s*0.12}" y="${-s*0.42}" width="${s*0.17}" height="${s*0.42}" fill="${C.grey}" ${S}/><rect x="${s*0.34}" y="${-s*0.42}" width="${s*0.17}" height="${s*0.42}" fill="${C.grey}" ${S}/>
+  <ellipse cx="0" cy="${-s*0.6}" rx="${s*0.58}" ry="${s*0.34}" fill="${C.grey}" ${S}/>
+  <path d="M${s*0.5} ${-s*0.7} Q${s*0.82} ${-s*0.72} ${s*0.8} ${-s*0.35} Q${s*0.78} ${-s*0.08} ${s*0.92} ${-s*0.05}" fill="none" stroke="${C.ink}" stroke-width="${s*0.13+1.5}" stroke-linecap="round"/>
+  <path d="M${s*0.5} ${-s*0.7} Q${s*0.82} ${-s*0.72} ${s*0.8} ${-s*0.35} Q${s*0.78} ${-s*0.08} ${s*0.92} ${-s*0.05}" fill="none" stroke="${C.grey}" stroke-width="${s*0.13}" stroke-linecap="round"/>
+  <circle cx="${s*0.55}" cy="${-s*0.72}" r="${s*0.24}" fill="${C.grey}" ${S}/>
+  <path d="M${s*0.42} ${-s*0.86} q-${s*0.22} ${s*0.05} -${s*0.16} ${s*0.32} q${s*0.12} ${s*0.04} ${s*0.2} -${s*0.06}Z" fill="#9d968b" ${S}/>
+  <path d="M${s*0.66} ${-s*0.55} q${s*0.12} ${s*0.06} ${s*0.18} -${s*0.02}" fill="none" stroke="${C.white}" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="${s*0.62}" cy="${-s*0.8}" r="1.3" fill="${C.ink}"/>
+  <path d="M${-s*0.3} ${-s*0.93} L${s*0.25} ${-s*0.93} L${s*0.3} ${-s*0.66} L${-s*0.35} ${-s*0.66}Z" fill="${C.red}" ${S}/>
+  <path d="M${-s*0.3} ${-s*0.66} L${s*0.3} ${-s*0.66}" stroke="${C.gold}" stroke-width="2"/></g>`;
+}
+function mountains(y){
+  return `<path d="M0 ${y} L40 ${y-55} L75 ${y-20} L120 ${y-80} L165 ${y-25} L205 ${y-70} L250 ${y-15} L300 ${y-60} L300 ${y} Z" fill="#9aa6a8" ${S}/>
+  <path d="M120 ${y-80} L108 ${y-62} L116 ${y-64} L122 ${y-58} L132 ${y-62}Z M205 ${y-70} L195 ${y-55} L204 ${y-57} L214 ${y-54}Z M40 ${y-55} L32 ${y-42} L41 ${y-44} L48 ${y-42}Z" fill="#fff" ${S}/>`;
+}
+const ground=(y,col=C.lgreen)=>`<path d="M0 ${y} Q150 ${y-6} 300 ${y} L300 150 L0 150Z" fill="${col}" ${S}/>`;
+const bg=(col=C.sky)=>`<rect width="300" height="150" fill="${col}"/>`;
+const sun=(x,y,r=11,col='#f0b44a')=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" ${S}/>`;
+const moon=(x,y)=>`<path d="M${x} ${y-10} a10 10 0 1 0 8 16 a8 8 0 1 1 -8 -16Z" fill="#f4ecd2" ${S}/>`;
+const label=(x,y,t)=>`<text x="${x}" y="${y}" font-family="Inter,Arial" font-size="7" fill="${C.ink}" text-anchor="middle" font-style="italic">${t}</text>`;
+function chariot(x,y,s){
+  return `<path d="M${x-s*0.35} ${y-s*0.3} L${x+s*0.3} ${y-s*0.3} L${x+s*0.25} ${y-s*0.7} L${x-s*0.3} ${y-s*0.7}Z" fill="${C.gold}" ${S}/>
+  <path d="M${x-s*0.3} ${y-s*0.7} L${x-s*0.3} ${y-s*1.1} M${x+s*0.25} ${y-s*0.7} L${x+s*0.25} ${y-s*1.1}" stroke="${C.ink}" stroke-width="1.5"/>
+  <path d="M${x-s*0.4} ${y-s*1.1} Q${x} ${y-s*1.35} ${x+s*0.35} ${y-s*1.1}Z" fill="${C.red}" ${S}/>
+  <circle cx="${x-s*0.05}" cy="${y-s*0.25}" r="${s*0.25}" fill="none" stroke="${C.ink}" stroke-width="2.5"/>
+  <path d="M${x-s*0.3} ${y-s*0.25} L${x+s*0.2} ${y-s*0.25} M${x-s*0.05} ${y-s*0.5} L${x-s*0.05} ${y}" stroke="${C.ink}" stroke-width="1.2"/>
+  <path d="M${x+s*0.3} ${y-s*0.4} L${x+s*0.75} ${y-s*0.45}" stroke="${C.ink}" stroke-width="2"/>`;
+}
+
+const panels=[
+ {t:'A Kingdom Divided', svg:()=>bg()+palace(18,112,80,82)+ground(112)+
+   person(165,128,62,{crown:1,robe:C.lapis,arms:'sword',necklace:1})+
+   person(232,130,60,{crown:1,robe:C.red,rot:-78,rx:232,ry:130,necklace:1})+label(150,144,'Polajanaka strikes down King Aritthajanaka'),
+  n:'In the city of Mithila, King Aritthajanaka was turned against his younger brother Polajanaka by false whispers. Polajanaka escaped, raised an army and killed the king in battle, seizing the throne.',
+  s:'"The crown of Mithila is mine now!"'},
+ {t:'Flight by Night', svg:()=>bg('#2c3550')+moon(255,28)+`<g fill="#f4ecd2">${[[30,20],[70,40],[120,15],[180,30],[215,55]].map(([a,b])=>`<circle cx="${a}" cy="${b}" r="1.2"/>`).join('')}</g>`+ground(118,'#556b45')+
+   chariot(150,128,60).replace(/fill="#c9962e"/,'fill="#b07a3a"')+bull(225,128,50)+
+   person(140,92,40,{female:1,robe:C.gold,crown:1,arms:'hold',skin:C.fair})+
+   person(193,105,36,{robe:C.white,arms:'point',halo:1})+
+   `<path d="M70 125 L20 112" stroke="#8a7a55" stroke-width="5" opacity=".5"/>`,
+  n:'The widowed queen, carrying the unborn prince, fled Mithila in disguise. The god Sakka (Indra), moved by her virtue, appeared as an old cart driver and carried her safely to the distant city of Champa.',
+  s:'"Fear not, noble lady. I will take you where you will be safe."'},
+ {t:'The Prince Learns the Truth', svg:()=>bg('#f1dfb8')+`<rect x="0" y="0" width="300" height="150" fill="none"/>`+
+   `<path d="M20 120 L20 40 L120 40 L120 120" fill="#e0c08e" ${S}/><path d="M10 42 L70 8 L130 42Z" fill="${C.red}" ${S}/><rect x="55" y="80" width="28" height="40" fill="#6b4226" ${S}/>`+ground(120)+
+   person(175,132,74,{female:1,robe:C.gold,arms:'pointL',skin:C.fair,necklace:1})+
+   person(232,132,50,{robe:C.lapis,arms:'down',halo:1})+label(205,146,'Champa, years later'),
+  n:'Mahajanaka grew up in Champa, strong and learned. When other boys mocked him as "the widow\'s son", he pressed his mother, who finally told him he was the rightful heir of Mithila.',
+  s:'"My son, your father was king of Mithila. Your kingdom waits for you."'},
+ {t:'Setting Sail', svg:()=>bg('#f3e2bd')+sun(250,30)+waves(105,C.sea,5,4)+ship(140,108,110)+
+   person(110,92,30,{robe:C.lapis,halo:1,arms:'point'})+person(165,92,26,{robe:C.red})+person(185,92,26,{robe:C.green})+
+   `<path d="M20 50 q6 -5 12 0 q6 -5 12 0" fill="none" stroke="${C.ink}" stroke-width="1"/>`,
+  n:'Determined to win back his father\'s kingdom, the young prince joined merchants sailing for Suvarnabhumi (the "Golden Land") to earn the wealth he needed to raise an army.',
+  s:'"With wealth from the Golden Land, I will reclaim Mithila."'},
+ {t:'The Shipwreck', svg:()=>bg('#5d6878')+`<path d="M60 10 L75 45 L68 45 L85 80" fill="none" stroke="#f4e27a" stroke-width="2.5"/>`+
+   waves(92,C.lapis,9,0)+ship(205,100,90,{broken:1,rot:28})+waves(110,'#3d6191',7,12)+
+   `<path d="M80 112 q8 -6 16 0" fill="none" stroke="#fff" stroke-width="1.5"/>`+
+   `<circle cx="95" cy="108" r="6" fill="${C.skin}" ${S}/><path d="M89 106 A6 6 0 0 1 101 106Z" fill="${C.ink}"/>`+
+   `<path d="M100 112 L116 104" stroke="${C.ink}" stroke-width="5" stroke-linecap="round"/><path d="M100 112 L116 104" stroke="${C.skin}" stroke-width="3.5" stroke-linecap="round"/>`+label(150,145,'Seven days and nights in the open sea'),
+  n:'In mid-ocean a storm broke the ship apart. The other sailors cried and perished, but Mahajanaka oiled his body, tied his clothes tight, leapt clear and swam. For seven days he kept swimming, never giving up.',
+  s:'"I will not stop striving, even if no shore is in sight."'},
+ {t:'The Goddess Manimekhala', svg:()=>bg('#e9dcc0')+waves(112,C.sea,5,6)+
+   `<path d="M120 55 Q160 35 210 60" fill="none" stroke="${C.red}" stroke-width="3" opacity=".8"/>`+
+   person(170,88,64,{female:1,robe:'#2f8a7f',crown:1,halo:1,arms:'up',rot:-20,rx:170,ry:88,skin:C.fair,necklace:1,sash:C.red})+
+   `<circle cx="95" cy="114" r="6" fill="${C.skin}" ${S}/><path d="M89 112 A6 6 0 0 1 101 112Z" fill="${C.ink}"/><path d="M98 110 L112 98" stroke="${C.ink}" stroke-width="5" stroke-linecap="round"/><path d="M98 110 L112 98" stroke="${C.skin}" stroke-width="3.5" stroke-linecap="round"/>`,
+  n:'Manimekhala, guardian goddess of the sea, tested him: why swim where no shore can be seen? Moved by his answer about the value of effort, she lifted him in her arms and carried him through the air to Mithila.',
+  s:'"Who strives to the end is free of blame, even if he fails."'},
+];
+const panels2=[
+ {t:'The Chariot Chooses', svg:()=>bg()+ground(115)+tree(55,118,95,{fruit:7})+
+   person(68,122,48,{robe:C.lapis,rot:-90,rx:68,ry:122,halo:1})+
+   chariot(190,122,58)+horse(253,122,50,1)+
+   person(140,120,40,{robe:C.green,arms:'pointL'})+person(118,120,38,{robe:C.red,arms:'pray'}),
+  n:'King Polajanaka had died without a son, leaving only Princess Sivali. The ministers sent out the royal festive chariot (phussaratha) with no driver. It circled the city and stopped beside a stranger sleeping under a mango tree.',
+  s:'"This is the one the chariot has chosen!"'},
+ {t:'A Wise New King', svg:()=>bg('#f1dcb0')+`<rect x="0" y="0" width="300" height="20" fill="${C.red}"/><path d="M0 20 ${Array.from({length:16},(_,i)=>`Q${i*20+10} 32 ${i*20+20} 20`).join(' ')}" fill="${C.red}" ${S}/>`+
+   `<rect x="30" y="88" width="70" height="40" fill="${C.gold}" ${S}/><rect x="35" y="55" width="8" height="35" fill="${C.gold}" ${S}/><rect x="87" y="55" width="8" height="35" fill="${C.gold}" ${S}/>`+
+   person(52,108,52,{crown:1,robe:C.lapis,halo:1,necklace:1})+person(80,110,46,{female:1,crown:1,robe:C.red,skin:C.fair,arms:'pray',necklace:1})+
+   ground(128,'#c99a62')+person(175,136,58,{female:1,robe:C.green,arms:'dance',skin:C.fair,necklace:1,sash:C.gold})+
+   person(232,136,44,{female:1,robe:C.red,arms:'hold',skin:C.fair})+`<ellipse cx="232" cy="113" rx="9" ry="5" fill="${C.gold}" ${S}/>`+
+   person(268,136,44,{female:1,robe:C.lapis,arms:'up',skin:C.fair}),
+  n:'Mahajanaka solved the riddles left by the old king, strung the mighty bow and found the hidden treasures. He married Princess Sivali and was crowned. The palace filled with music and dancers, the scene Ajanta\'s painters show so richly.',
+  s:'"Let Mithila be ruled with justice and kindness."'},
+ {t:'The Two Mango Trees', svg:()=>bg()+ground(118)+tree(75,120,88,{fruit:9})+tree(165,120,80,{broken:1})+
+   person(155,122,34,{robe:C.red,arms:'up'})+person(185,122,30,{robe:C.green,arms:'up'})+
+   elephant(250,124,58,-1)+person(245,72,30,{crown:1,robe:C.lapis,halo:1,arms:'pointL'}),
+  n:'Returning from his garden, the king saw two mango trees. The one full of sweet fruit had been stripped and broken by greedy hands. The bare, fruitless one stood green and untouched. He understood that possessions bring danger and suffering.',
+  s:'"The tree with fruit is broken; the tree without stands at peace."'},
+ {t:'The Great Renunciation', svg:()=>bg('#f1dfb8')+palace(170,118,110,100)+ground(118,'#c99a62')+
+   person(95,132,66,{robe:C.saffron,bald:1,halo:1,arms:'down'})+
+   person(160,132,56,{female:1,crown:1,robe:C.red,arms:'pray',skin:C.fair,necklace:1})+
+   person(205,132,48,{robe:C.green,arms:'pray'})+person(240,132,48,{robe:C.lapis,arms:'pray'})+label(95,146,'In an ascetic\'s robe'),
+  n:'The king shaved his head, put on simple robes and left the palace with only a begging bowl. Queen Sivali and the people begged him to stay. She even set fire to houses to make him turn back, but he walked on calmly.',
+  s:'"Nothing that burns there is mine. I walk free."'},
+ {t:'Toward the Himalayas', svg:()=>bg('#efe0bf')+sun(150,40,16,'#f3c066')+mountains(105)+ground(110)+
+   person(185,124,48,{robe:C.saffron,bald:1,halo:1,arms:'hold'})+`<ellipse cx="184" cy="101" rx="6" ry="3.5" fill="#6b4226" ${S}/>`+
+   person(62,130,40,{female:1,crown:1,robe:C.red,arms:'pray',skin:C.fair})+
+   `<path d="M80 128 Q130 118 175 125" fill="none" stroke="${C.ink}" stroke-dasharray="3 3" stroke-width="1"/>`+label(70,146,'Sivali turns back'),
+  n:'Sivali followed him until they reached a fork in the road. Picking up a reed broken from its stem, he told her they could never be joined again. She returned to rule; he went to the Himalayas to meditate.',
+  s:'"Like this reed, I cannot return to the stem."'},
+];
+
+function render(list,id,start){
+  document.getElementById(id).innerHTML=list.map((p,i)=>`<article class="panel">
+   <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">${p.svg()}<rect x=".5" y=".5" width="299" height="149" fill="none" stroke="${C.ink}" stroke-width="0"/></svg>
+   <div class="cap"><h3><span class="num">${start+i}</span>${p.t}</h3>${p.n}<div class="say">${p.s}</div></div></article>`).join('');
+}
+render(panels,'g1',1);
+render(panels2,'g2',7);
+document.getElementById('g2').insertAdjacentHTML('beforeend',`<article class="panel about"><div class="cap">
+ <h3>About the Painting</h3>
+ <ul>
+  <li><b>Where:</b> walls of the main hall, Cave 1, Ajanta (Maharashtra), a Buddhist monastery (vihara)</li>
+  <li><b>When:</b> c. late 5th century CE, under the Vakataka king Harishena</li>
+  <li><b>Technique:</b> tempera on dry lime plaster over a clay-and-straw base, with mineral pigments: red and yellow ochre, terre-verte, lamp black and imported lapis lazuli</li>
+  <li><b>Style:</b> continuous narration: many episodes flow across one wall without frames, with graceful figures, flowing lines and rich palace scenes</li>
+  <li><b>Jataka:</b> tales of the Buddha's past lives; here the Bodhisattva is born as Prince Mahajanaka</li>
+ </ul>
+ <div class="moral">Moral: Never give up striving, and know when to let go. True freedom comes from detachment, not possessions.</div>
+</div></article>`);
+</script>
+</body>
+</html>

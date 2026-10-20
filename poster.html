@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kolam and Rangoli Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  @page{size:A3 portrait;margin:0}
+  :root{--bg:#fbf3e2;--ink:#2e1d12;--red:#a8321e;--mar:#e8871e;--mag:#b8326f;--green:#3f7a4c;--blue:#2c5d8f;--gold:#d9a531}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#ccc;font-family:Inter,Arial,sans-serif;color:var(--ink)}
+  .poster{width:297mm;height:420mm;margin:0 auto;background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column;padding:0 14mm 6mm}
+  @media print{body{background:none}}
+  .band{margin:0 -14mm;padding:8mm 14mm 6mm;background:var(--red);color:#fff6e6;position:relative;text-align:center}
+  .band:after{content:"";position:absolute;left:0;right:0;bottom:-6mm;height:6mm;
+    background:radial-gradient(circle at 3mm 0,var(--red) 3mm,transparent 3.2mm) 0 0/6mm 6mm repeat-x}
+  .course{font-size:10pt;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+  h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:50pt;line-height:1;margin:2mm 0 1mm}
+  h1 span{color:var(--gold)}
+  .tag{font-size:15pt;font-style:italic;font-family:'Cormorant Garamond',Georgia,serif}
+  .intro{font-size:10.5pt;line-height:1.45;text-align:center;max-width:235mm;margin:8mm auto 4mm}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:8mm}
+  .card{background:#fffaf0;border:2px solid var(--ink);border-radius:4mm;padding:4mm 5mm}
+  .card h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:27pt;line-height:1}
+  .card .k{color:var(--red)} .card .r{color:var(--mag)}
+  .card .sub{font-size:9.5pt;color:#6b5040;margin:1mm 0 3mm}
+  .body{display:grid;grid-template-columns:62mm 1fr;gap:5mm;align-items:center}
+  .art{display:flex;justify-content:center}
+  .art svg{width:62mm;height:62mm}
+  ul{padding-left:5mm;font-size:9.6pt;line-height:1.42}
+  li{margin-bottom:.8mm}
+  h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:19pt;margin:5mm 0 2mm;color:var(--red)}
+  table{width:100%;border-collapse:collapse;font-size:9.6pt;background:#fffaf0}
+  th,td{border:1.2px solid var(--ink);padding:1.3mm 3mm;text-align:left;vertical-align:top}
+  th{background:var(--ink);color:#fff6e6}
+  td:first-child{font-weight:700;width:30mm;background:#f3e3c3}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
+  .box{border-radius:3mm;padding:3mm 4mm;font-size:9.6pt;line-height:1.45;color:#fff;}
+  .box h4{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;margin-bottom:1.5mm}
+  .box ul{padding-left:4mm;font-size:9pt;line-height:1.38}
+  .b1{background:var(--green)} .b2{background:var(--blue)} .b3{background:var(--mag)}
+  .regions{display:grid;grid-template-columns:repeat(5,1fr);gap:2.5mm}
+  .reg{background:#fffaf0;border:1.2px solid var(--ink);border-radius:2mm;padding:1.5mm 2mm;font-size:8.4pt;text-align:center}
+  .reg b{display:block;font-size:10.5pt;color:var(--red)}
+  .motifs{display:flex;justify-content:space-between;gap:2mm;margin-top:1mm}
+  .motif{text-align:center;font-size:8.6pt;width:23mm}
+  .motif svg{width:15mm;height:15mm;display:block;margin:0 auto 1mm}
+  .dyk{margin-top:3mm;border:2px dashed var(--red);border-radius:3mm;padding:3.5mm 5mm;font-size:9.8pt;line-height:1.45;background:#fff5e0}
+  .dyk b{color:var(--red)}
+  footer{margin-top:auto;padding-top:2.5mm;display:flex;justify-content:space-between;font-size:8.6pt;color:#6b5040;border-top:1.5px solid var(--red)}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="band">
+    <div class="course">21LEM301T · Indian Art Forms · CLA-II Poster (CO4)</div>
+    <h1>Kolam <span>&amp;</span> Rangoli</h1>
+    <div class="tag">Traditional Indian Floor Art: welcoming the divine, one pattern at a time</div>
+  </div>
+
+  <p class="intro">Every morning across India, doorsteps bloom with patterns drawn by hand on the ground. <b>Kolam</b> and <b>Rangoli</b> are ancient floor arts that decorate homes, welcome guests and gods, and carry centuries of faith, mathematics and community tradition.</p>
+
+  <div class="two">
+    <div class="card">
+      <h2 class="k">Kolam</h2>
+      <div class="sub">Tamil Nadu &amp; South India · drawn daily at dawn</div>
+      <div class="body"><div class="art"><svg id="kolam" viewBox="0 0 200 200"></svg></div>
+      <ul>
+        <li>Drawn with <b>white rice flour</b> (or rock powder) let fall between the thumb and fingers.</li>
+        <li>Based on a <b>grid of dots (pulli)</b>; lines loop around the dots in one continuous path (<i>sikku kolam</i>).</li>
+        <li>Mostly <b>white, symmetrical and geometric</b>; coloured on festivals.</li>
+        <li>Made by women at sunrise after washing the threshold with water or cow-dung water.</li>
+      </ul></div>
+    </div>
+    <div class="card">
+      <h2 class="r">Rangoli</h2>
+      <div class="sub">Maharashtra, Gujarat &amp; all of India · made on festivals</div>
+      <div class="body"><div class="art"><svg id="rangoli" viewBox="0 0 200 200"></svg></div>
+      <ul>
+        <li>Made with <b>coloured powders</b>, rice, lentils, sand, flower petals or chalk.</li>
+        <li>Mostly <b>freehand</b>; designs include lotuses, peacocks, diyas, deities and mandalas.</li>
+        <li><b>Bright and multicoloured</b>, often filled edge to edge.</li>
+        <li>Especially made for <b>Diwali</b>, weddings and other celebrations.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <h3>Kolam vs Rangoli at a Glance</h3>
+  <table>
+    <tr><th>Feature</th><th>Kolam</th><th>Rangoli</th></tr>
+    <tr><td>Region</td><td>Tamil Nadu, also Kerala, Karnataka, Andhra Pradesh</td><td>Maharashtra, Gujarat, North &amp; West India; known across India</td></tr>
+    <tr><td>Material</td><td>Rice flour or white stone powder</td><td>Coloured powders, flowers, rice, sand</td></tr>
+    <tr><td>Design base</td><td>Dot grid; continuous looping lines</td><td>Freehand outlines filled with colour</td></tr>
+    <tr><td>Colour</td><td>Mostly white</td><td>Many bright colours</td></tr>
+    <tr><td>When</td><td>Every day at dawn</td><td>Festivals and special occasions</td></tr>
+    <tr><td>Shared meaning</td><td colspan="2">Welcomes Goddess Lakshmi, protects the home, expresses joy and hospitality</td></tr>
+  </table>
+
+  <h3>Why We Draw Them</h3>
+  <div class="three">
+    <div class="box b1"><h4>Cultural Meaning</h4><ul>
+      <li>A sign of a <b>welcoming, happy home</b>; no kolam can signal mourning.</li>
+      <li>Passed from <b>mother to daughter</b>, keeping skills and memory alive.</li>
+      <li>Rice flour <b>feeds ants and birds</b>: daily charity to all living beings.</li>
+      <li>Brings neighbours together, especially in festival contests.</li></ul></div>
+    <div class="box b2"><h4>Religious Meaning</h4><ul>
+      <li>Invites <b>Goddess Lakshmi</b>, bringing prosperity and good fortune.</li>
+      <li>Marks the threshold as <b>sacred</b> and keeps away evil and negativity.</li>
+      <li>Drawn around altars, <b>tulsi</b> plants and puja spaces.</li>
+      <li>Patterns like the lotus, sun and conch are holy symbols.</li></ul></div>
+    <div class="box b3"><h4>Festivals</h4><ul>
+      <li><b>Pongal / Sankranti:</b> giant coloured kolams with pots and sugarcane.</li>
+      <li><b>Diwali:</b> rangoli with diyas and Lakshmi's footprints.</li>
+      <li><b>Onam:</b> <i>pookalam</i> made of flower petals in Kerala.</li>
+      <li><b>Margazhi month:</b> daily kolam competitions in Tamil Nadu.</li></ul></div>
+  </div>
+
+  <h3>One Art, Many Names</h3>
+  <div class="regions">
+    <div class="reg"><b>Kolam</b>Tamil Nadu</div>
+    <div class="reg"><b>Muggulu</b>Andhra &amp; Telangana</div>
+    <div class="reg"><b>Rangavalli</b>Karnataka</div>
+    <div class="reg"><b>Pookalam</b>Kerala (flowers)</div>
+    <div class="reg"><b>Rangoli</b>Maharashtra &amp; Gujarat</div>
+    <div class="reg"><b>Alpana</b>West Bengal</div>
+    <div class="reg"><b>Mandana</b>Rajasthan &amp; MP</div>
+    <div class="reg"><b>Aripan</b>Bihar (Mithila)</div>
+    <div class="reg"><b>Chowk Purana</b>Uttar Pradesh</div>
+    <div class="reg"><b>Jhoti / Chita</b>Odisha</div>
+  </div>
+
+  <h3>Common Motifs &amp; Their Meaning</h3>
+  <div class="motifs" id="motifs"></div>
+
+  <div class="dyk"><b>Did you know?</b> Kolam is a form of living mathematics. A <i>sikku</i> kolam is drawn as a single closed line that loops around every dot without lifting the hand, the same idea as an Eulerian path in graph theory. Computer scientists have even studied kolams to understand symmetry, fractals and picture languages.</div>
+
+  <footer><span>Team: __________________________________________</span><span>Sources: course notes; IGNCA (ignca.gov.in); Ascher, M. "The Kolam Tradition", <i>American Scientist</i>, 2002</span></footer>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+// ---------- Kolam: dot grid with interlaced loops ----------
+(function(){
+  let g='<rect width="200" height="200" rx="10" fill="#7a2f1d"/>';
+  const pts=[]; const n=5, step=26, cx=100, cy=100;
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){
+    const a=i-(n-1)/2, b=j-(n-1)/2; if(Math.abs(a)+Math.abs(b)>(n-1)/2) continue;
+    pts.push([cx+(a-b)*step/1.414*1.0, cy+(a+b)*step/1.414*1.0]);
+  }
+  const L='fill="none" stroke="#fffaf0" stroke-width="2.6" stroke-linecap="round"';
+  // loops around every dot (rounded diamonds)
+  pts.forEach(([x,y])=>{const r=13;g+=`<path d="M${x} ${y-r} Q${x+r} ${y-r} ${x+r} ${y} Q${x+r} ${y+r} ${x} ${y+r} Q${x-r} ${y+r} ${x-r} ${y} Q${x-r} ${y-r} ${x} ${y-r}Z" ${L} transform="rotate(45 ${x} ${y})"/>`;});
+  // outer petals on 4 sides
+  [[0,-1],[1,0],[0,1],[-1,0]].forEach(([dx,dy])=>{
+    const x=cx+dx*72,y=cy+dy*72; g+=`<path d="M${cx+dx*52} ${cy+dy*52} Q${x+dy*22} ${y-dx*22} ${x+dx*16} ${y+dy*16} Q${x-dy*22} ${y+dx*22} ${cx+dx*52} ${cy+dy*52}" ${L}/>`;
+    g+=`<circle cx="${x+dx*4}" cy="${y+dy*4}" r="2.2" fill="#fffaf0"/>`;
+  });
+  [[1,-1],[1,1],[-1,1],[-1,-1]].forEach(([dx,dy])=>{const x=cx+dx*55,y=cy+dy*55;g+=`<path d="M${x-dx*8} ${y} q${dx*8} ${-dy*14} ${dx*14} ${dy*4} q${-dx*6} ${dy*12} ${-dx*14} ${-dy*4}" ${L} stroke-width="2"/>`;});
+  pts.forEach(([x,y])=>g+=`<circle cx="${x}" cy="${y}" r="2.3" fill="#fffaf0"/>`);
+  g+=`<circle cx="100" cy="100" r="96" fill="none" stroke="#fffaf0" stroke-width="1.2" stroke-dasharray="2 5"/>`;
+  document.getElementById('kolam').innerHTML=g;
+})();
+// ---------- Rangoli: radial mandala ----------
+(function(){
+  const c=100; let g='<rect width="200" height="200" rx="10" fill="#f4e5c6"/>';
+  const ring=(n,r1,r2,w,col,off=0)=>{let s='';for(let i=0;i<n;i++){const a=(i*360/n)+off;s+=`<path d="M${c} ${c-r1} Q${c+w} ${c-(r1+r2)/2} ${c} ${c-r2} Q${c-w} ${c-(r1+r2)/2} ${c} ${c-r1}Z" fill="${col}" stroke="#2e1d12" stroke-width=".7" transform="rotate(${a} ${c} ${c})"/>`;}return s;};
+  g+=`<circle cx="${c}" cy="${c}" r="94" fill="#2c5d8f" stroke="#2e1d12" stroke-width="1"/>`;
+  g+=ring(24,72,94,7,'#d9a531',7.5);
+  g+=`<circle cx="${c}" cy="${c}" r="74" fill="#b8326f" stroke="#2e1d12" stroke-width="1"/>`;
+  g+=ring(16,44,74,12,'#e8871e');
+  g+=ring(16,52,70,5,'#fff2cf');
+  g+=`<circle cx="${c}" cy="${c}" r="46" fill="#3f7a4c" stroke="#2e1d12" stroke-width="1"/>`;
+  g+=ring(8,18,46,13,'#f6d24a',22.5);
+  g+=ring(8,18,44,11,'#a8321e');
+  g+=`<circle cx="${c}" cy="${c}" r="18" fill="#fff2cf" stroke="#2e1d12" stroke-width="1"/>`;
+  // diya at centre
+  g+=`<path d="M88 104 Q100 116 112 104Z" fill="#a8321e" stroke="#2e1d12"/><path d="M100 103 Q94 95 100 86 Q106 95 100 103Z" fill="#e8871e" stroke="#2e1d12" stroke-width=".7"/><path d="M100 101 Q97 96 100 91 Q103 96 100 101Z" fill="#f6d24a"/>`;
+  for(let i=0;i<24;i++){const a=i*15*Math.PI/180;g+=`<circle cx="${c+84*Math.sin(a)}" cy="${c-84*Math.cos(a)}" r="1.6" fill="#fff"/>`;}
+  document.getElementById('rangoli').innerHTML=g;
+})();
+// ---------- Motifs ----------
+const S='stroke="#2e1d12" stroke-width="1.4"';
+const motifs=[
+ ['Lotus','purity &amp; Lakshmi',`<path d="M30 46 Q16 30 30 10 Q44 30 30 46Z" fill="#b8326f" ${S}/><path d="M30 46 Q8 40 6 22 Q24 26 30 46Z M30 46 Q52 40 54 22 Q36 26 30 46Z" fill="#e06f9e" ${S}/><path d="M12 50 L48 50" ${S}/>`],
+ ['Diya','light over darkness',`<path d="M12 38 Q30 54 48 38Z" fill="#a8321e" ${S}/><path d="M30 37 Q20 24 30 8 Q40 24 30 37Z" fill="#e8871e" ${S}/><path d="M30 33 Q25 25 30 17 Q35 25 30 33Z" fill="#f6d24a"/>`],
+ ['Peacock','beauty &amp; grace',`<path d="M30 48 Q8 40 10 14 Q30 4 50 14 Q52 40 30 48Z" fill="#3f7a4c" ${S}/>${[[20,20],[30,15],[40,20],[24,32],[36,32]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3.2" fill="#2c5d8f" stroke="#d9a531" stroke-width="1.2"/>`).join('')}<path d="M30 48 Q26 36 30 30 Q34 26 33 22" fill="none" stroke="#2c5d8f" stroke-width="3.2"/>`],
+ ['Sun','energy &amp; life',`<circle cx="30" cy="30" r="11" fill="#f6d24a" ${S}/>${Array.from({length:12},(_,i)=>`<path d="M30 12 L30 5" ${S} stroke="#e8871e" stroke-width="2.4" transform="rotate(${i*30} 30 30)"/>`).join('')}`],
+ ['Footprints','Lakshmi entering',`<g fill="#a8321e" ${S}><ellipse cx="22" cy="36" rx="6" ry="10"/><ellipse cx="38" cy="22" rx="6" ry="10"/></g><g fill="#a8321e">${[[17,23],[21,22],[25,22.5],[28,24]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.8"/>`).join('')}${[[33,9],[37,8],[41,8.5],[44,10]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.8"/>`).join('')}</g>`],
+ ['Conch','auspicious sound',`<path d="M14 40 Q10 18 30 10 Q50 14 46 30 Q40 46 22 46Z" fill="#fff2cf" ${S}/><path d="M22 44 Q30 30 44 26 M20 36 Q30 24 42 18" fill="none" ${S}/>`],
+ ['Fish','fertility &amp; abundance',`<path d="M8 30 Q26 12 44 30 Q26 48 8 30Z" fill="#2c5d8f" ${S}/><path d="M44 30 L54 20 L54 40Z" fill="#2c5d8f" ${S}/><circle cx="18" cy="28" r="2" fill="#fff"/>`],
+ ['Mango leaf','welcome &amp; growth',`<path d="M30 6 Q50 26 30 54 Q10 26 30 6Z" fill="#3f7a4c" ${S}/><path d="M30 8 L30 52" ${S}/>`],
+];
+document.getElementById('motifs').innerHTML=motifs.map(([n,m,s])=>`<div class="motif"><svg viewBox="0 0 60 60">${s}</svg><b>${n}</b><br>${m}</div>`).join('');
+</script>
+</body>
+</html>
